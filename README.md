@@ -31,19 +31,33 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question.
 
 1. In 1-2 sentences, explain what React's `useRouteMatch` hook is used for.
+useRouteMatch is used to get the closest url match in a component or its parents.
+It can be used to have a url that has a dynamic portion such as /recipes/:food
+where food changes for each page/content
+
 1. How would you explain form validation to someone who has never programmed before?
+Form validation is the act of ensuring the correctness of user entered data on a form.
+Depending on if there are required fields to be entered, or certain length of characters,
+or even format of information can be controlled using validation. It also provides user
+feedback so that the user is able to understand how to best complete a form if the information
+is not in the correct format.
+
 1. In 1-2 sentences, define end to end testing.
+End to end testing is the act of testing a product as a user would from start to finish.
+It includes multiple aspects (front end, back end, ui, ux, etc) 
+combined together and usually takes a long time to completely
+verify if the product works without any hiccups. 
 
 ## Instructions
 
 ### Task 1: Project Set Up
 
-- [ ] Create a forked copy of this project
-- [ ] Add your team lead as collaborator on Github
-- [ ] Clone your OWN version of the repository (Not Lambda's by mistake!)
-- [ ] Create a new branch: `git checkout -b <firstName-lastName>`
-- [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
-- [ ] Push commits: `git push origin <firstName-lastName>`
+- [x] Create a forked copy of this project
+- [x] Add your team lead as collaborator on Github
+- [x]Clone your OWN version of the repository (Not Lambda's by mistake!)
+- [x] Create a new branch: `git checkout -b <firstName-lastName>`
+- [x] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
+- [x] Push commits: `git push origin <firstName-lastName>`
 
 ### Task 2: Project Requirements
 

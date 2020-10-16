@@ -214,7 +214,7 @@ export default function Homepage(props) {
                 </label><br/>
                 <label>Phone Number
                     <input
-                        type="number"
+                        type="tel"
                         name="phone_number"                        
                         value={formValues.phone_number}
                         onChange={handleChange}></input>

@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import styled from 'styled-components'
 import { NavLink, Route } from 'react-router-dom'
+import styled from 'styled-components'
+import * as yup from 'yup'
+import schema from '../schema/schema'
+
+
+//Styled Components
+const ErrorContainer = styled.div`
+    color: red;
+`;
 
 
 
@@ -34,15 +42,24 @@ const defaultErrors = {
 
 
 
-
-
 export default function Homepage(props) {
     
     //Store Form Values
     const [formValues, setFormValues] = useState(defaultFormValues)
 
+    //Set Up Error States 
+    const [errors, setErrors] = useState(defaultErrors)
+
     //Set Button State
     const [disabled, setDisabled] = useState(true)
+
+    //Set button on if form is valid
+    useEffect(() => {
+        schema.isValid(formValues)
+            .then((valid) => setDisabled(!valid))
+    }, [formValues])
+
+
 
     //Form Handlers
     const handleChange = (event) => {
@@ -53,18 +70,37 @@ export default function Homepage(props) {
         const valueToUse = type === 'checkbox' ? checked : value;
 
         //Check yup
+        yup.reach(schema, name)
+            .validate(valueToUse)
+                //If valid, clear our any errors
+                .then(valid => setErrors({ ...errors, [name]:'' }))
+                //If invalid, set errors from yup schema
+                .catch(error => setErrors({ ...errors, [name]: error.errors[0] }));
+
         setFormValues({...formValues, [name]: valueToUse})
     }
 
-    //Submit
-    const submit = () => {
-
+    //Submit Handler
+    const submit = (event) => {
+        //Prevent default form submit behaviour
+        event.preventDefault();
+        
+        //Clear form after submission
+        setFormValues(defaultFormValues);
     }
     
     return(
         <>
         <div>
             <form onSubmit={submit}>
+                <ErrorContainer>                    
+                    <div>{errors.size}</div>
+                    <div>{errors.sauce}</div>
+                    <div>{errors.name}</div>
+                    <div>{errors.address}</div>
+                    <div>{errors.phone_number}</div>
+                </ErrorContainer>
+
                 <h1>Build Your Own Pizza</h1>
                 <label>Pizza Size
                     <select name="size" value={formValues.size} onChange={handleChange}>
@@ -137,18 +173,21 @@ export default function Homepage(props) {
                     <input
                         type="text"
                         name="name"
+                        value={formValues.name}
                         onChange={handleChange}></input>
                 </label><br/>
                 <label>Address
                     <input
                         type="text"
-                        name="address"
+                        name="address"                        
+                        value={formValues.address}
                         onChange={handleChange}></input>
                 </label><br/>
                 <label>Phone Number
                     <input
                         type="number"
-                        name="phone_number"
+                        name="phone_number"                        
+                        value={formValues.phone_number}
                         onChange={handleChange}></input>
                 </label><br/>
                 <h2>Special Instructions</h2>

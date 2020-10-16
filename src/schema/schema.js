@@ -2,9 +2,11 @@ import * as yup from 'yup'
 
 const schema = yup.object().shape({
     size: yup
-        .string(),
+        .string()
+        .required('please select pizza size'),
     sauce: yup
-        .string(),
+        .string()
+        .required('Please select a sauce'),
     pepperoni: yup
         .boolean(),
     sausage: yup
@@ -14,13 +16,16 @@ const schema = yup.object().shape({
     anchovy: yup
         .boolean(),
     name: yup
-        .string(),
+        .string()
+        .required('Please enter your name')
+        .min(4, 'Please enter a name greater than 4 characters'),
     address: yup
-        .string(),
-    phonenumber: yup
-        .string(),
+        .string()
+        .required('Please enter a valid address')
+        .min(5, 'Please enter an address longer than 5 characters'),
     phone_number: yup
-        .number(),
+        .number()
+        .required('Please enter your phone number'),
     special_instructions: yup
         .string()
 })

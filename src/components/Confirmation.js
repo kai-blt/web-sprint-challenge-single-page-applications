@@ -4,6 +4,6 @@ import { NavLink, Route } from 'react-router-dom'
 
 export default function Homepage(props) {
     return(
-        <div>Confirmation</div>
+        <div><h1>Congratulations your order was successfully placed!</h1></div>
     )
 }

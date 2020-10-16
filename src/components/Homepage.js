@@ -9,7 +9,6 @@ const HomepageContainer = styled.div`
         background-size: cover;
         height: 100vh;
     }
-
 `;
 
 

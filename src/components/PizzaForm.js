@@ -104,7 +104,7 @@ export default function Homepage(props) {
         }        
 
 
-        axios.post('https://reqres.in/pizza', newPizza)
+        axios.post('https://reqres.in/api/pizza', newPizza)
             .then(res => {
                 console.log(res.data)
                 //Clear form after submission

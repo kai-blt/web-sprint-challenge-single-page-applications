@@ -46,7 +46,7 @@ export default function Homepage(props) {
             <form>
                 <h1>Build Your Own Pizza</h1>
                 <label>Pizza Size
-                    <select name="size" value={formValues.size}>
+                    <select name="size" value={formValues.size} onChange={handleChange}>
                         <option value=''>--Please select your pizza size--</option>
                         <option value='small'>Small</option>
                         <option value='medium'>Medium</option>
@@ -58,24 +58,27 @@ export default function Homepage(props) {
                     <label>
                         <input
                             type="radio"
-                            name="Marinara"
-                            value={formValues.sauce === 'marinara'}
+                            name="sauce"
+                            value="marinara"
+                            checked={formValues.sauce === 'marinara'}
                             onChange={handleChange}
                         />Marinara
                     </label><br/>
                     <label>
                         <input
                             type="radio"
-                            name="Alfredo"
-                            value="Alfredo"
+                            name="sauce"
+                            value="alfredo"
+                            checked={formValues.sauce === 'alfredo'}
                             onChange={handleChange}
                         />Alfredo
                     </label><br/>
                     <label>
                         <input
                             type="radio"
-                            name="Curry"
-                            value="Curry"
+                            name="sauce"
+                            value="curry"                         
+                            checked={formValues.sauce === 'curry'}
                             onChange={handleChange}
                         />Curry
                     </label><br/>
@@ -84,7 +87,6 @@ export default function Homepage(props) {
                     <input
                         type="checkbox"
                         name="pepperoni"
-                        value={formValues.pepperoni === 'pepperoni'}
                         onChange={handleChange}
                     />Pepperoni
                 </label><br/>
@@ -92,7 +94,6 @@ export default function Homepage(props) {
                     <input
                         type="checkbox"
                         name="sausage"
-                        value={formValues.sausage === 'sausage'}
                         onChange={handleChange}
                     />Sausage
                 </label><br/>
@@ -100,7 +101,6 @@ export default function Homepage(props) {
                     <input
                         type="checkbox"
                         name="onion"
-                        value={formValues.onion === 'onion'}
                         onChange={handleChange}
                     />Onion
                 </label><br/>
@@ -108,7 +108,6 @@ export default function Homepage(props) {
                     <input
                         type="checkbox"
                         name="anchovy"
-                        value={formValues.anchovy === 'anchovy'}
                         onChange={handleChange}
                     />Anchovy
                 </label><br/>
@@ -117,21 +116,18 @@ export default function Homepage(props) {
                     <input
                         type="text"
                         name="name"
-                        value={formValues.name}
                         onChange={handleChange}></input>
                 </label><br/>
                 <label>Address
                     <input
                         type="text"
                         name="address"
-                        value={formValues.address}
                         onChange={handleChange}></input>
                 </label><br/>
                 <label>Phone Number
                     <input
                         type="text"
                         name="phonenumber"
-                        value={formValues.phonenumber}
                         onChange={handleChange}></input>
                 </label><br/>
                 

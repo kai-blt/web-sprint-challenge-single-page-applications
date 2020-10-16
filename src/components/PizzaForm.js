@@ -14,8 +14,24 @@ const defaultFormValues = {
     anchovy: false,
     name: '',
     address: '',
-    phonenumber: ''
+    phone_number: '',
+    special_instructions: ''
 }
+
+//Error values
+const defaultErrors = {
+    size: '',
+    sauce: '',
+    pepperoni: false,
+    sausage: false,
+    onion: false,
+    anchovy: false,
+    name: '',
+    address: '',
+    phone_number: '',
+    special_instructions: ''
+}
+
 
 
 
@@ -39,11 +55,16 @@ export default function Homepage(props) {
         //Check yup
         setFormValues({...formValues, [name]: valueToUse})
     }
+
+    //Submit
+    const submit = () => {
+
+    }
     
     return(
         <>
         <div>
-            <form>
+            <form onSubmit={submit}>
                 <h1>Build Your Own Pizza</h1>
                 <label>Pizza Size
                     <select name="size" value={formValues.size} onChange={handleChange}>
@@ -126,11 +147,12 @@ export default function Homepage(props) {
                 </label><br/>
                 <label>Phone Number
                     <input
-                        type="text"
-                        name="phonenumber"
+                        type="number"
+                        name="phone_number"
                         onChange={handleChange}></input>
                 </label><br/>
-                
+                <h2>Special Instructions</h2>
+                <textarea name="special_instructions"></textarea><br/>
                 <button disabled={disabled}>Order</button>
             </form>
         </div>

@@ -5,6 +5,7 @@ import Header from './components/Header'
 const AppContainer = styled.div`
   display: flex;
   flex-direction: column nowrap;
+  justify-content: center;
   width: 100%;
   margin: auto;
 `;

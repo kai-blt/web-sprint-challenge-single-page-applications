@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { NavLink, Route } from 'react-router-dom'
+import { useHistory, Route } from 'react-router-dom'
 import styled from 'styled-components'
 import * as yup from 'yup'
 import schema from '../schema/schema'
+import axios from 'axios'
 
 
 //Styled Components
@@ -42,6 +43,7 @@ const defaultErrors = {
 
 
 
+
 export default function Homepage(props) {
     
     //Store Form Values
@@ -52,6 +54,8 @@ export default function Homepage(props) {
 
     //Set Button State
     const [disabled, setDisabled] = useState(true)
+
+    const history = useHistory();
 
     //Set button on if form is valid
     useEffect(() => {
@@ -83,10 +87,35 @@ export default function Homepage(props) {
     //Submit Handler
     const submit = (event) => {
         //Prevent default form submit behaviour
-        event.preventDefault();
-        
-        //Clear form after submission
-        setFormValues(defaultFormValues);
+        event.preventDefault();      
+
+
+        const newPizza = {
+            size: formValues.size,
+            sauce: formValues.sauce,
+            pepperoni: formValues.pepperoni,
+            sausage: formValues.sausage,
+            onion: formValues.onion,
+            anchovy: formValues.anchovy,
+            name: formValues.name.trim(),
+            address: formValues.address.trim(),
+            phone_number: formValues.phone_number.trim(),
+            special_instructions: formValues.special_instructions.trim()
+        }        
+
+
+        axios.post('https://reqres.in/pizza', newPizza)
+            .then(res => {
+                console.log(res.data)
+                //Clear form after submission
+                setFormValues(defaultFormValues);
+            })
+            .catch(err => {
+                console.log(err.data)
+            });
+
+        //Go to confirmation page
+        history.push('/confirmation')
     }
     
     return(

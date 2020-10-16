@@ -10,11 +10,14 @@ const HeaderContainer = styled.div`
     width: 100%;
     background-color: #555;    
     color: #fff;
+    box-shadow: 5px 5px 30px #000;
+    padding: 5%;
 
     a {
         text-decoration: none;
         margin: 0 5%;
         padding: 2%;
+        margin: 5% 0;
 
         &:visited {
             color: #fff;

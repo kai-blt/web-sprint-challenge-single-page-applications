@@ -24,7 +24,7 @@ const schema = yup.object().shape({
         .required('Please enter a valid address')
         .min(5, 'Please enter an address longer than 5 characters'),
     phone_number: yup
-        .number()
+        .string()
         .required('Please enter your phone number'),
     special_instructions: yup
         .string()

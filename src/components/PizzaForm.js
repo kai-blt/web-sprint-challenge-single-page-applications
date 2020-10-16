@@ -198,21 +198,21 @@ export default function Homepage(props) {
                     />Anchovy
                 </label><br/>
                 <h2>Address Information</h2>
-                <label>Name
+                <label>Name&nbsp;
                     <input
                         type="text"
                         name="name"
                         value={formValues.name}
                         onChange={handleChange}></input>
                 </label><br/>
-                <label>Address
+                <label>Address&nbsp;
                     <input
                         type="text"
                         name="address"                        
                         value={formValues.address}
                         onChange={handleChange}></input>
                 </label><br/>
-                <label>Phone Number
+                <label>Phone Number&nbsp;
                     <input
                         type="tel"
                         name="phone_number"                        

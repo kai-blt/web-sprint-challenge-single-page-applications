@@ -1,11 +1,21 @@
 import React from "react";
+import styled from 'styled-components'
+import Header from './components/Header'
+
+const AppContainer = styled.div`
+  display: flex;
+  flex-direction: column nowrap;
+  justify-content: center;
+  width: 100%;
+  margin: auto;
+`;
+
 
 const App = () => {
   return (
-    <>
-      <h1>Lambda Eats</h1>
-      <p>You can remove this code and create your own header</p>
-    </>
+    <AppContainer>      
+      <Header />
+    </AppContainer>
   );
 };
 export default App;
